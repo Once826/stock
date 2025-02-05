@@ -9,6 +9,10 @@ class IndexData(models.Model):
     close = models.FloatField()
     volume = models.IntegerField()
 
+    class Meta:
+        ordering = ['-date']
+        unique_together = ['ticker', 'date']
+
 class ForexData(models.Model):
     pair = models.CharField(max_length=10)
     date = models.DateField()
@@ -17,3 +21,7 @@ class ForexData(models.Model):
     low = models.FloatField()
     close = models.FloatField()
     volume = models.IntegerField()
+
+    class Meta:
+        ordering = ['-date']
+        unique_together = ['pair', 'date']
